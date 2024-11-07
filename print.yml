@@ -5,7 +5,7 @@ on:
     types: [trigger-workflow, push]
     
 jobs:
-  build:
+  print:
     runs-on: ubuntu-latest
 
     steps:
