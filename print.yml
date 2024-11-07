@@ -1,0 +1,17 @@
+name: Print
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow, push]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: List directory structure
+       run: echo "Printed :)
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+      #   with:
+      #   ref: ${{ github.event.client_payload.sha }}
