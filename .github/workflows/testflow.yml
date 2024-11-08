@@ -8,18 +8,17 @@ on:
         type: string
     
 jobs:
-  print:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    # - name: Checkout code
-    #   uses: actions/checkout@v4
-    #   with:
-    #   ref: ${{ github.event.client_payload.sha }}
+      - run: echo "${{ inputs.example-input }}"
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: ${{ github.event.client_payload.sha }}
       # - name: Checkout code
       #   uses: actions/checkout@v3
-      - name: Print Example Input
-        run: echo "Input is: ${{ inputs.example-input }}"
       
       # - name: Checkout code
       #   uses: actions/checkout@v4
