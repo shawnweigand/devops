@@ -1,1 +1,17 @@
+name: Approve
 
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    environment:
+        name: production 
+    steps:
+      - name: Wait for manual approval
+        run: echo "Manual approval required for deployment."
