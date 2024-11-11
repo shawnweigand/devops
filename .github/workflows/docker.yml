@@ -19,6 +19,10 @@ jobs:
         with:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Checkout Dockerfile
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.client_payload.sha }}
       - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
