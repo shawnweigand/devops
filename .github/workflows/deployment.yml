@@ -11,8 +11,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DO_API_TOKEN }}
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save ${{ vars.DO_CLUSTER_NAME }}
+      - name: Helm tool installer
+        uses: azure/setup-helm@v4.2.0
       - name: Checkout Values
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.client_payload.sha }}
       - run: ls -R
+      # - name: Deploy Helm chart to DOKS
+      #   run: |
+      #     helm upgrade --install portfolio ./helm \
+      #     --set image.repository="${{ secrets.DOCKER_USERNAME }}/prod" \
+      #     --set image.tag="portfolio" \
+      #     --namespace portfolio
