@@ -19,11 +19,14 @@ jobs:
         run: doctl kubernetes cluster kubeconfig save ${{ vars.DO_CLUSTER_NAME }}
       - name: Helm tool installer
         uses: azure/setup-helm@v4.2.0
-      - name: Checkout Values
+      - name: Checkout values
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.client_payload.sha }}
+      - name: Checkout current repo
+        uses: actions/checkout@v3
       - run: ls -R
+      - run: cat ${{ inputs.valuesPath }}
       # - name: Deploy Helm chart to DOKS
       #   run: |
       #     helm upgrade --install portfolio ./helm \
