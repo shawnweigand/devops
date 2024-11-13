@@ -25,6 +25,9 @@ jobs:
           ref: ${{ github.event.client_payload.sha }}
       - name: Checkout current repo
         uses: actions/checkout@v3
+        with:
+          repository: shawnweigand/devops
+          path: devops
       - run: ls -R
       - run: cat ${{ inputs.valuesPath }}
       # - name: Deploy Helm chart to DOKS
