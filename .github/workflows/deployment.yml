@@ -33,7 +33,7 @@ jobs:
       - name: Deploy Helm chart to DOKS
         run: |
           helm upgrade --install \
-          -f devops/${{ inputs.valuesPath }} \
+          -f ${{ inputs.valuesPath }} \
           portfolio \
-          ./helm \
+          ./devops/helm \
           --namespace portfolio
