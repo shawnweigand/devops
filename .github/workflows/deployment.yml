@@ -28,11 +28,12 @@ jobs:
         with:
           repository: shawnweigand/devops
           path: devops
-      - run: ls -R
-      - run: cat ${{ inputs.valuesPath }}
-      # - name: Deploy Helm chart to DOKS
-      #   run: |
-      #     helm upgrade --install portfolio ./helm \
-      #     --set image.repository="${{ secrets.DOCKER_USERNAME }}/prod" \
-      #     --set image.tag="portfolio" \
-      #     --namespace portfolio
+      # - run: ls -R
+      # - run: cat ${{ inputs.valuesPath }}
+      - name: Deploy Helm chart to DOKS
+        run: |
+          helm upgrade --install \
+          -f devops/${{ inputs.valuesPath }} \
+          portfolio \
+          ./helm \
+          --namespace portfolio
