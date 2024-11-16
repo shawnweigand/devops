@@ -28,8 +28,6 @@ jobs:
         with:
           repository: shawnweigand/devops
           path: devops
-      # - run: ls -R
-      # - run: cat ${{ inputs.valuesPath }}
       - name: Deploy Helm chart to DOKS
         run: |
           helm upgrade --install \
