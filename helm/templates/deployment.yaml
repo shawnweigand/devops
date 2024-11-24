@@ -45,4 +45,4 @@ spec:
               path: /healthz
               port: 8080
             failureThreshold: 90
-            periodSeconds: 10
+            periodSeconds: 30
