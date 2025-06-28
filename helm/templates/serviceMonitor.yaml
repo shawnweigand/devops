@@ -8,5 +8,8 @@ spec:
   selector:
     matchLabels:
       app: {{ .Release.Name }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
   endpoints:
   - port: "{{ .Release.Name }}-web"
