@@ -34,6 +34,13 @@ jobs:
         with:
           repository: shawnweigand/devops
           path: devops
+      - name: Show Helm Template
+        run: |
+          helm template \
+            -f ${{ inputs.valuesPath }} \
+            ${{ inputs.helmRelease }} \
+            ./devops/helm \
+            --namespace ${{ inputs.namespace }}      
       - name: Deploy Helm chart to DOKS
         run: |
           helm upgrade --install \
