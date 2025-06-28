@@ -34,6 +34,7 @@ jobs:
         with:
           repository: shawnweigand/devops
           path: devops
+          ref: feat/monitoring
       - name: Show Helm Template
         run: |
           helm template \
