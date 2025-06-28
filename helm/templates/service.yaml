@@ -4,7 +4,8 @@ metadata:
   name: "{{ .Release.Name }}-service"
 spec:
   ports:
-    - port: {{ .Values.ingress.externalPort }}         # External port to expose (e.g., 80 or 443)
+    - name: "{{ .Release.Name }}-web"
+      port: {{ .Values.ingress.externalPort }}         # External port to expose (e.g., 80 or 443)
       targetPort: {{ .Values.ingress.internalPort }}   # The port the app listens to inside the pod
       protocol: TCP
   selector:

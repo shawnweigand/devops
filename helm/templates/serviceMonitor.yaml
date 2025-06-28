@@ -7,4 +7,4 @@ spec:
     matchLabels:
       app: {{ .Release.Name }}
   endpoints:
-  - port: {{ .Values.ingress.internalPort }}
+  - port: "{{ .Release.Name }}-web"
