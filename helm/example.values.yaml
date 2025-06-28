@@ -2,8 +2,8 @@
 deployment:
   replicas: 1
   image:
-    repository: shawnweigand/prod
-    tag: portfolio
+    repository: repository/prod
+    tag: application
   registry:
     imagePullSecret: docker-registry-secret
 serviceAccount:
@@ -11,21 +11,17 @@ serviceAccount:
   imagePullSecret: docker-registry-secret
 
 ingress:
-  host: shawnweigand.com
+  host: website.com
   tls: true
+  externalPort: 80
+  internalPort: 8080
 
 issuer:
-  email: weigandshawn@gmail.com
+  email: user@email.com
   server: https://acme-v02.api.letsencrypt.org/directory
 
+pdb:
+  minAvailable: 1
+
 config:
-  APP_NAME: "Shawn Weigand"
-  APP_URL: https://shawnweigand.com
-  APP_ENV: production
-  MAIL_MAILER: smtp
-  MAIL_HOST: smtp.gmail.com
-  MAIL_PORT: 587
-  MAIL_USERNAME: shawnweigandapps@gmail.com
-  MAIL_ENCRYPTION: tls
-  MAIL_FROM_NAME: "${APP_NAME}"
-  MAIL_FROM_ADDRESS: weigandshawn@gmail.com
+  APP_NAME: "TEST"

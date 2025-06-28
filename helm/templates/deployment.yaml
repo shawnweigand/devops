@@ -20,7 +20,7 @@ spec:
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.ingress.internalPort }}
           envFrom:
           - secretRef:
               name: "{{ .Release.Name }}-secret"
@@ -29,21 +29,21 @@ spec:
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: {{ .Values.ingress.internalPort }}
             initialDelaySeconds: 5
             periodSeconds: 30
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: {{ .Values.ingress.internalPort }}
             initialDelaySeconds: 5
             periodSeconds: 30
             failureThreshold: 1
           startupProbe:
             httpGet:
               path: /healthz
-              port: 8080
+              port: {{ .Values.ingress.internalPort }}
             initialDelaySeconds: 5
             failureThreshold: 6
             periodSeconds: 10
