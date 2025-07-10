@@ -45,7 +45,7 @@ jobs:
         run: |
           helm upgrade --install \
           -f ${{ inputs.valuesPath }} \
-          # --set dockerConfigJson="${{ secrets.K8S_DOCKER_CONFIG_JSON }}" \
           ${{ inputs.helmRelease }} \
           ./devops/helm \
           --namespace ${{ inputs.namespace }}
+          # --set dockerConfigJson="${{ secrets.K8S_DOCKER_CONFIG_JSON }}" \
