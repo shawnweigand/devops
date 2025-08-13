@@ -23,7 +23,7 @@ spec:
             - containerPort: {{ .Values.ingress.internalPort }}
           envFrom:
           - secretRef:
-              name: "{{ .Release.Name }}-secret"
+              name: "{{ .Release.Name }}-secret-doppler"
           - configMapRef:
               name: "{{ .Release.Name }}-config"
           livenessProbe:
