@@ -26,7 +26,7 @@ spec:
               name: "{{ .Release.Name }}-secret-doppler"
           - configMapRef:
               name: "{{ .Release.Name }}-config"
-          {{- if (default true .Values.deployment.probes.enabled) }}
+          {{- if .Values.deployment.probes.enabled }}
           livenessProbe:
             httpGet:
               path: /healthz
