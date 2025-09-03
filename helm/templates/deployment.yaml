@@ -26,6 +26,7 @@ spec:
               name: "{{ .Release.Name }}-secret-doppler"
           - configMapRef:
               name: "{{ .Release.Name }}-config"
+{{- if (default true .Values.deployment.probes.enabled) }}
           livenessProbe:
             httpGet:
               path: /healthz
@@ -50,3 +51,4 @@ spec:
             periodSeconds: 20            # Increased from 10
             timeoutSeconds: 10           # Increased from 3
             failureThreshold: 20         # Increased from 10
+{{- end }}
