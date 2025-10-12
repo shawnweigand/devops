@@ -18,9 +18,6 @@ spec:
           image: "redis:latest"
           ports:
             - containerPort: 6379
-          volumeMounts:
-            - name: redis-data
-              mountPath: /data
 ---
 apiVersion: v1
 kind: Service
