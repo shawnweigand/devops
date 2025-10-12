@@ -4,6 +4,8 @@ deployment:
   image:
     repository: repository/prod
     tag: application
+  probes:
+    enabled: true
   registry:
     imagePullSecret: docker-registry-secret
 serviceAccount:
