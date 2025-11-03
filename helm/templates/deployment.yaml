@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
-  annotations:
-    rollme: "{{ now | unixEpoch }}"
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
@@ -13,6 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
+    annotations:
+      rollme: "{{ now | unixEpoch }}"
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       imagePullSecrets:
