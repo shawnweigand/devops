@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
+  annotations:
+    rollme: "{{ now | unixEpoch }}"
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
