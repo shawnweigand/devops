@@ -11,8 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
-    annotations:
-      rollme: "{{ now | unixEpoch }}"
+      annotations:
+        rollme: "{{ now | unixEpoch }}"
     spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       imagePullSecrets:
